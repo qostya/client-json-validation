@@ -14,12 +14,21 @@
     "json-schema"
   ],
   "author": "qostyab@gmail.com",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^26.0.10",
     "jest": "^26.4.2",
     "ts-jest": "^26.2.0",
     "tslint-config-airbnb": "^5.11.2",
     "typescript": "^4.0.2"
-  }
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qostya/client-json-validation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/qostya/client-json-validation/issues"
+  },
+  "homepage": "https://github.com/qostya/client-json-validation#readme"
 }
