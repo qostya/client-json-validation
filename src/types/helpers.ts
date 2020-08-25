@@ -3,5 +3,5 @@ export function isObject(el: any) {
 }
 
 export function isArray(el: any) {
-  return Array.isArray(el);
+  return Boolean(el) && el.constructor === Array;
 }
