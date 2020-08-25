@@ -1,10 +1,14 @@
 {
   "name": "client-json-validation",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "description": "Lightweight client side JSON validator with zero dependencies",
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "build": "tsc",
+    "publish": "tsc && npm publish --access public"
   },
   "keywords": [
     "json",
