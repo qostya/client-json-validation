@@ -52,6 +52,11 @@ const errors = {
     invalid(value: any, items: Array<{ type: string }>) {
       return `Value must be one of this type: ${items.map(i => i.type).join(', ')}, get ${JSON.stringify(value)} instead`;
     }
+  },
+  enum: {
+    invalid(value: any, items: Array<any>) {
+      return `Value must be one of this type: ${JSON.stringify(items)}, get ${JSON.stringify(value)} instead`;
+    }
   }
 };
 

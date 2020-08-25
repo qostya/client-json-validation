@@ -2,9 +2,10 @@ import {ObjectType, Schema} from './types/object';
 import {StringType} from './types/string';
 import {NumberType} from './types/number';
 import {ArrayType} from './types/array';
-import {OneOfType, Items} from './types/one-of';
+import {OneOfType, Items as ItemsOneOf} from './types/one-of';
 import {BooleanType} from './types/boolean';
 import {Base} from './types/base';
+import {EnumType, Items as ItemsEnum} from './types/enum';
 
 
 export function string() {
@@ -27,6 +28,10 @@ export function array(childType: Base) {
   return new ArrayType({type: 'array', childType});
 }
 
-export function oneOf(...items: Items) {
+export function oneOf(...items: ItemsOneOf) {
   return new OneOfType({type: 'oneOf', items});
+}
+
+export function enumType(...items: ItemsEnum) {
+  return new EnumType({type: 'enum', items});
 }
