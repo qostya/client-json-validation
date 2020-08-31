@@ -20,6 +20,9 @@ const errors = {
     not() {
       return 'Value is not a number';
     },
+    isNaN() {
+      return 'Value must be non-NaN value';
+    },
     min(value: number, min: number) {
       return `Value ${value} is greater than ${min}`;
     },

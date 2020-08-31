@@ -29,4 +29,12 @@ test('it should validate NUMBER correctly', () => {
   expect(
     object({n: number().max(5)}).validate({n: 10})
   ).toEqual({n: errors.number.max(10, 5)});
+
+  expect(
+    object({n: number().eqeq()}).validate({n: '1234'})
+  ).toEqual(null);
+
+  expect(
+    object({n: number().eqeq(), nu: number().eqeq()}).validate({n: 'ABC', nu: [123]})
+  ).toEqual({n: errors.number.isNaN(), nu: errors.number.not()});
 });
