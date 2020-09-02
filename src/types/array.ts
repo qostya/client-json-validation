@@ -1,7 +1,6 @@
 import {Base, Options} from './base';
 import {Error} from './types';
 import {isArray} from './helpers';
-import errors from '../errors';
 
 
 export class ArrayType extends Base {
@@ -28,9 +27,9 @@ export class ArrayType extends Base {
   validate(value: any) {
     const error = super.validate(value);
     if (error) return error;
-    if (!isArray(value)) return errors.array.not();
-    if (this._min && value.length < this._min) return errors.array.min(value, this._min);
-    if (this._max && value.length > this._max) return errors.array.max(value, this._max);
+    if (!isArray(value)) return this.texts.array.not();
+    if (this._min && value.length < this._min) return this.texts.array.min(value, this._min);
+    if (this._max && value.length > this._max) return this.texts.array.max(value, this._max);
     const errs: Error = {};
     value.forEach((item: any, index: number) => {
       const err = this.childType.validate(item);

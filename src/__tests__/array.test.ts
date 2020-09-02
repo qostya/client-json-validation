@@ -1,5 +1,8 @@
-import {object, array, number, string} from '../index';
-import errors from '../errors';
+import {object, array, number, string, setLocale} from '../index';
+import texts from '../texts/en';
+
+
+setLocale(texts);
 
 test('it should validate ARRAYS correctly', () => {
   expect(
@@ -8,11 +11,11 @@ test('it should validate ARRAYS correctly', () => {
 
   expect(
     object({a: array(string()).required()}).validate({})
-  ).toEqual({a: errors.main.required()});
+  ).toEqual({a: texts.main.required()});
 
   expect(
     object({a: array(string())}).validate({a: [123, 456]})
-  ).toEqual({a: {0: errors.string.not(), 1: errors.string.not()}});
+  ).toEqual({a: {0: texts.string.not(), 1: texts.string.not()}});
 
   expect(
     object({
@@ -34,7 +37,7 @@ test('it should validate ARRAYS correctly', () => {
 
   expect(
     object({a: array(string()).min(1)}).validate({a: []})
-  ).toEqual({a: errors.array.min([], 1)});
+  ).toEqual({a: texts.array.min([], 1)});
 
   expect(
     object({a: array(string()).max(2)}).validate({a: ['abc', 'def']})
@@ -42,5 +45,5 @@ test('it should validate ARRAYS correctly', () => {
 
   expect(
     object({a: array(string()).max(1)}).validate({a: ['abc', 'def']})
-  ).toEqual({a: errors.array.max(['abc', 'def'], 1)});
+  ).toEqual({a: texts.array.max(['abc', 'def'], 1)});
 });

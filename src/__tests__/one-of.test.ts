@@ -1,5 +1,8 @@
-import {object, array, number, oneOf, string, boolean} from '../index';
-import errors from '../errors';
+import {object, array, number, oneOf, string, boolean, setLocale} from '../index';
+import texts from '../texts/en';
+
+
+setLocale(texts);
 
 test('it should validate ONE-OF correctly', () => {
   expect(
@@ -12,7 +15,7 @@ test('it should validate ONE-OF correctly', () => {
 
   expect(
     object({o: oneOf(string(), number()).required()}).validate({})
-  ).toEqual({o: errors.main.required()});
+  ).toEqual({o: texts.main.required()});
 
   expect(
     object({o: array(oneOf(string(), number(), boolean()))}).validate({o: [123, 'ABC', true]})

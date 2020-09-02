@@ -1,5 +1,8 @@
-import {object, boolean} from '../index';
-import errors from '../errors';
+import {object, boolean, setLocale} from '../index';
+import texts from '../texts/en';
+
+
+setLocale(texts);
 
 test('it should validate BOOLEAN correctly', () => {
   expect(
@@ -8,9 +11,9 @@ test('it should validate BOOLEAN correctly', () => {
 
   expect(
     object({b: boolean()}).validate({b: 123})
-  ).toEqual({b: errors.boolean.not()});
+  ).toEqual({b: texts.boolean.not()});
 
   expect(
     object({b: boolean().required()}).validate({})
-  ).toEqual({b: errors.main.required()});
+  ).toEqual({b: texts.main.required()});
 });

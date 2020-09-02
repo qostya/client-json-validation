@@ -1,7 +1,6 @@
 import {Base, Options} from './base';
 import {Error} from './types';
 import {isObject} from './helpers';
-import errors from '../errors';
 
 
 export type Schema = {
@@ -24,7 +23,7 @@ export class ObjectType extends Base {
   validate(value: any) {
     const error = super.validate(value);
     if (error !== null) return error;
-    if (!isObject(value)) return errors.object.not();
+    if (!isObject(value)) return this.texts.object.not();
     const errs: Error = {};
     Object.keys(this.schema).forEach(key => {
       const field = this.schema[key];

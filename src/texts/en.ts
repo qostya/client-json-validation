@@ -1,5 +1,5 @@
 
-const errors = {
+const texts = {
   main: {
     required() {
       return 'Field is required';
@@ -63,4 +63,4 @@ const errors = {
   }
 };
 
-export default errors;
+export default texts;

@@ -1,5 +1,4 @@
 import {Base} from './base';
-import errors from '../errors';
 
 
 export class StringType extends Base {
@@ -19,9 +18,9 @@ export class StringType extends Base {
   validate(value: any) {
     const error = super.validate(value);
     if (error) return error;
-    if (typeof value !== 'string') return errors.string.not();
-    if (this._max && value.length > this._max) return errors.string.max(value, this._max);
-    if (this._min && value.length < this._min) return errors.string.min(value, this._min);
+    if (typeof value !== 'string') return this.texts.string.not();
+    if (this._max && value.length > this._max) return this.texts.string.max(value, this._max);
+    if (this._min && value.length < this._min) return this.texts.string.min(value, this._min);
     return null;
   }
 }

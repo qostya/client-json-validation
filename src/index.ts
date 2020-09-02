@@ -7,6 +7,11 @@ import {BooleanType} from './types/boolean';
 import {Base} from './types/base';
 import {EnumType, Items as ItemsEnum} from './types/enum';
 
+
+export function setLocale(locale: any) {
+  Base.locale = locale;
+}
+
 export function string() {
   return new StringType({type: 'string'});
 }

@@ -1,5 +1,4 @@
 import {Base, Options} from './base';
-import errors from '../errors';
 
 
 export type Items = Base[]
@@ -17,7 +16,7 @@ export class OneOfType extends Base {
     const error = super.validate(value);
     if (error) return error;
     const valid = this.items.find(item => !item.validate(value));
-    if (!valid) return errors.oneOf.invalid(value, this.items);
+    if (!valid) return this.texts.oneOf.invalid(value, this.items);
     return null;
   }
 }

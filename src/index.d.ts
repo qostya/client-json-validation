@@ -6,6 +6,8 @@ import {ArrayType} from './types/array';
 import {OneOfType, Items as ItemsOneOf} from './types/one-of';
 import {ObjectType, Schema} from './types/object';
 import {EnumType, Items as ItemsEnum} from './types/enum';
+import texts from './texts/en';
+
 
 declare function string(): StringType;
 declare function number(): NumberType;
@@ -14,3 +16,4 @@ declare function object(schema: Schema): ObjectType;
 declare function array(childType: Base): ArrayType;
 declare function oneOf(...items: ItemsOneOf): OneOfType;
 declare function enumType(...items: ItemsEnum): EnumType;
+declare function setLocale(lang: typeof errors): void;
