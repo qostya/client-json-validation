@@ -4,15 +4,13 @@ import {Error} from './types';
 export type Options = { type: string, children?: typeof Base };
 
 export class Base {
-  static locale = null;
+  static locale: any;
   public texts: any;
   public isRequired: boolean = false;
   public type: string;
 
   constructor(options: Options) {
     const {type} = options;
-    if (!Base.locale) throw new Error('You must set locale by `setLocale` function')
-    this.texts = Base.locale;
     this.type = type;
   }
 
@@ -22,7 +20,10 @@ export class Base {
   }
 
   validate(value: any): null | string | Error {
-    if (this.isRequired && (value == null || value === '')) return this.texts.main.required();
+    if (!Base.locale) throw new Error('You must set localization by `setLocale` function: https://github.com/qostya/client-json-validation')
+    if (this.isRequired && (value == null || value === '')) {
+      return Base.locale.main.required();
+    }
     return null;
   }
 }

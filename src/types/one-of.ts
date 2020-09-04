@@ -16,7 +16,7 @@ export class OneOfType extends Base {
     const error = super.validate(value);
     if (error) return error;
     const valid = this.items.find(item => !item.validate(value));
-    if (!valid) return this.texts.oneOf.invalid(value, this.items);
+    if (!valid) return Base.locale.oneOf.invalid(value, this.items);
     return null;
   }
 }

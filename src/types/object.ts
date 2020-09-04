@@ -23,7 +23,7 @@ export class ObjectType extends Base {
   validate(value: any) {
     const error = super.validate(value);
     if (error !== null) return error;
-    if (!isObject(value)) return this.texts.object.not();
+    if (!isObject(value)) return Base.locale.object.not();
     const errs: Error = {};
     Object.keys(this.schema).forEach(key => {
       const field = this.schema[key];

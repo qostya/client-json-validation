@@ -27,14 +27,17 @@ export class ArrayType extends Base {
   validate(value: any) {
     const error = super.validate(value);
     if (error) return error;
-    if (!isArray(value)) return this.texts.array.not();
-    if (this._min && value.length < this._min) return this.texts.array.min(value, this._min);
-    if (this._max && value.length > this._max) return this.texts.array.max(value, this._max);
-    const errs: Error = {};
-    value.forEach((item: any, index: number) => {
+    if (!isArray(value)) return Base.locale.array.not();
+    if (this._min && value.length < this._min) return Base.locale.array.min(value, this._min);
+    if (this._max && value.length > this._max) return Base.locale.array.max(value, this._max);
+    return value.reduce((acc: Error | null, item: any, index: number) => {
+      let errs = acc;
       const err = this.childType.validate(item);
-      if (err) errs[index] = err;
-    })
-    return Object.keys(errs).length > 0 ? errs : null;
+      if (err) {
+        if (!errs) errs = {};
+        errs[index] = err;
+      }
+      return errs;
+    }, null);
   }
 }

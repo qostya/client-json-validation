@@ -25,13 +25,13 @@ export class NumberType extends Base {
     const error = super.validate(value);
     if (error) return error;
     if (typeof value !== 'number') {
-      if (this._isStrict) return this.texts.number.not();
+      if (this._isStrict) return Base.locale.number.not();
       if (typeof value === 'string') {
-        if (isNaN(Number(value))) return this.texts.number.isNaN();
-      } else return this.texts.number.not();
+        if (isNaN(Number(value))) return Base.locale.number.isNaN();
+      } else return Base.locale.number.not();
     }
-    if (this._min && value < this._min) return this.texts.number.min(Number(value), this._min);
-    if (this._max && value > this._max) return this.texts.number.max(Number(value), this._max);
+    if (this._min && value < this._min) return Base.locale.number.min(Number(value), this._min);
+    if (this._max && value > this._max) return Base.locale.number.max(Number(value), this._max);
     return null;
   }
 }

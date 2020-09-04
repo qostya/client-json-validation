@@ -16,7 +16,7 @@ export class EnumType extends Base {
     const error = super.validate(value);
     if (error) return error;
     const found = this.items.find(item => item === value);
-    if (!found) return this.texts.enum.invalid(value, this.items);
+    if (!found) return Base.locale.enum.invalid(value, this.items);
     return null;
   }
 }
