@@ -40,5 +40,5 @@ schema.validate({
     {cost: 'one hundred', title: 'T-Shirt'},
     {title: 'Bag'}
   ]
-}); // Returns {items: {0: {title: 'Value is not a number'}}}}
+}); // Returns {items: {0: {cost: 'Value is not a number'}}}}
 ```
