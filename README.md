@@ -8,9 +8,16 @@ npm i -S client-json-validation
 ```
 ### Usage
 
-```typescript
+```javascript
+// Import lib
 import {object, string, array, number} from 'client-json-validation';
+// Import target locale
+import en from 'client-json-validation/lib/texts/en';
 
+// Set localization once (en|ru)
+setLocale(en);
+
+// Create schema
 const schema = object({
   items: array(
     object({
@@ -20,10 +27,18 @@ const schema = object({
   ).min(1)
 });
 
+// Run validation
 schema.validate({
   items: [
     {cost: 100, title: 'T-Shirt'},
     {title: 'Bag'}
   ]
-});
+}); // Returns null
+
+schema.validate({
+  items: [
+    {cost: 'one hundred', title: 'T-Shirt'},
+    {title: 'Bag'}
+  ]
+}); // Returns {items: {0: {title: 'Value is not a number'}}}}
 ```
