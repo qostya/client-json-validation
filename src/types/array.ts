@@ -8,8 +8,9 @@ export class ArrayType extends Base {
   private _min: number | undefined;
   private _max: number | undefined;
 
-  constructor({childType, ...rest}: Options & { childType: Base }) {
-    super(rest);
+  constructor(options: Options & { childType: Base }) {
+    const {childType} = options;
+    super(options);
     this.childType = childType;
     if (!childType) new Error('childType property is required');
   }

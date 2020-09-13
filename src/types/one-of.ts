@@ -6,8 +6,9 @@ export type Items = Base[]
 export class OneOfType extends Base {
   private items: Items;
 
-  constructor({items, ...rest}: Options & { items: Items }) {
-    super(rest);
+  constructor(options: Options & { items: Items }) {
+    const {items} = options;
+    super(options);
     this.items = items;
     if (!items || !items.length) throw new Error('items property is required');
   }

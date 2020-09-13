@@ -10,8 +10,9 @@ export type Schema = {
 export class ObjectType extends Base {
   private schema: Schema;
 
-  constructor({schema, ...rest}: Options & { schema: Schema }) {
-    super(rest);
+  constructor(options: Options & { schema: Schema }) {
+    const {schema} = options;
+    super(options);
     this.schema = schema;
     if (!schema) new Error('Schema property is required');
     Object.keys(this.schema).forEach(key => {

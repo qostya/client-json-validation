@@ -17,7 +17,7 @@ import en from 'client-json-validation/lib/texts/en';
 // Set localization once (en|ru)
 setLocale(en);
 
-// Create schema
+// Create a schema
 const schema = object({
   items: array(
     object({
@@ -27,7 +27,7 @@ const schema = object({
   ).min(1)
 });
 
-// Run validation
+// Run validate function
 schema.validate({
   items: [
     {cost: 100, title: 'T-Shirt'},
