@@ -24,10 +24,10 @@ const texts = {
       return 'Value must be non-NaN value';
     },
     min(value: number, min: number) {
-      return `Value ${value} is greater than ${min}`;
+      return `Value is greater than ${min}, get ${value}`;
     },
     max(value: number, max: number) {
-      return `Value ${value} is more than ${max}`;
+      return `Value is more than ${max}, get ${value}`;
     }
   },
   boolean: {

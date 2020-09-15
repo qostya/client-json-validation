@@ -10,10 +10,10 @@ const texts = {
       return 'Значение должно быть строкой';
     },
     max(value: string, max: number) {
-      return `Длина значения ${value} должна быть больше ${max}`;
+      return `Длина значения ${value} должна быть меньше ${max}`;
     },
     min(value: string, min: number) {
-      return `Длина значения ${value} должна быть меньше ${min}`;
+      return `Длина значения ${value} должна быть больше ${min}`;
     }
   },
   number: {
@@ -24,10 +24,10 @@ const texts = {
       return 'Значение должно быть числом';
     },
     min(value: number, min: number) {
-      return `Значение ${value} должно быть меньше ${min}`;
+      return `Значение должно быть больше ${min}, а не ${value} `;
     },
     max(value: number, max: number) {
-      return `Значение ${value} должно быть больше ${max}`;
+      return `Значение должно быть меньше ${max}, а не ${value} `;
     }
   },
   boolean: {
@@ -40,10 +40,10 @@ const texts = {
       return 'Значение должно быть массивом';
     },
     min(value: any[], min: number) {
-      return `Длина массива должна быть больше ${min}, а не ${value.length}`;
+      return `Длина массива должна быть больше ${min}`;
     },
     max(value: any[], max: number) {
-      return `Длина массива должна быть меньше ${max}, а не ${value.length}`;
+      return `Длина массива должна быть меньше ${max}`;
     }
   },
   object: {

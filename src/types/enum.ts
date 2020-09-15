@@ -1,4 +1,5 @@
 import {Base, Options} from './base';
+import {deepEquals} from './helpers';
 
 
 export type Items = any[];
@@ -16,7 +17,7 @@ export class EnumType extends Base {
   validate(value: any) {
     const error = super.validate(value);
     if (error) return error;
-    const found = this.items.find(item => item === value);
+    const found = this.items.find(item => deepEquals(item, value));
     if (!found) return Base.locale.enum.invalid(value, this.items);
     return null;
   }
