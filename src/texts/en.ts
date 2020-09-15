@@ -14,6 +14,9 @@ const texts = {
     },
     min(value: string, min: number) {
       return `${value} length is less than ${min}`;
+    },
+    match(value: string, regexp: RegExp) {
+      return `Value ${value} does not match the pattern ${regexp.toString()}`;
     }
   },
   number: {
@@ -24,10 +27,10 @@ const texts = {
       return 'Value must be non-NaN value';
     },
     min(value: number, min: number) {
-      return `Value is greater than ${min}, get ${value}`;
+      return `Value is less than ${min}`;
     },
     max(value: number, max: number) {
-      return `Value is more than ${max}, get ${value}`;
+      return `Value is greater than ${max}`;
     }
   },
   boolean: {
@@ -40,10 +43,10 @@ const texts = {
       return 'Value is not an array';
     },
     min(value: any[], min: number) {
-      return `Array length must be greater than ${min}, get ${value.length} instead`;
+      return `Array length must be greater than ${min}`;
     },
     max(value: any[], max: number) {
-      return `Array length must be less than ${max}, get ${value.length} instead`;
+      return `Array length must be less than ${max}`;
     }
   },
   object: {

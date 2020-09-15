@@ -1,6 +1,6 @@
 {
   "name": "client-json-validation",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Lightweight client side JSON validator with zero dependencies",
   "main": "lib/index.js",
   "scripts": {

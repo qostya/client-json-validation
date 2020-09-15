@@ -10,10 +10,13 @@ const texts = {
       return 'Значение должно быть строкой';
     },
     max(value: string, max: number) {
-      return `Длина значения ${value} должна быть меньше ${max}`;
+      return `Длина значения ${value} должна быть не больше ${max}`;
     },
     min(value: string, min: number) {
-      return `Длина значения ${value} должна быть больше ${min}`;
+      return `Длина значения ${value} должна быть не меньше ${min}`;
+    },
+    match(value: string, regexp: RegExp) {
+      return `Значение ${value} не подходит по паттерну ${regexp.toString()}`;
     }
   },
   number: {
