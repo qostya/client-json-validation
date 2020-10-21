@@ -5,6 +5,7 @@ export class StringType extends Base {
   private _max: number | undefined;
   private _min: number | undefined;
   private _match: RegExp | undefined;
+  private _allowEmpty: true | undefined;
 
   public max(length: number) {
     this._max = length;
@@ -21,7 +22,13 @@ export class StringType extends Base {
     return this;
   }
 
+  public allowEmpty() {
+    this._allowEmpty = true;
+    return this;
+  }
+
   validate(value: any) {
+    if (this._allowEmpty && value === '') return null;
     const error = super.validate(value);
     if (error) return error;
     const texts = Base.locale.string;

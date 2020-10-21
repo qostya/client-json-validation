@@ -18,6 +18,14 @@ test('it should validate STRING correctly', () => {
   ).toEqual({s: texts.main.required()});
 
   expect(
+    object({s: string().required().allowEmpty()}).validate({s: ''})
+  ).toEqual(null);
+
+  expect(
+    object({s: string().required()}).validate({s: ''})
+  ).toEqual({s: texts.main.required()});
+
+  expect(
     object({s: string()}).validate({s: 123})
   ).toEqual({s: texts.string.not()});
 
